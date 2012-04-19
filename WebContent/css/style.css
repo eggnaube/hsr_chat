@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+body {
+	background: url("../img/bg.png");
+	background-repeat: repeat-x;
+	background-color: rgb(86%,86%,86%);
+}
+
+.container {
+	
+}
