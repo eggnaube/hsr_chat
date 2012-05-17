@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel value="Welcome #{user.name}"></h:outputLabel>
+
+			<br />
+			<br />
+
+			<h:outputLabel value="Aviable Chatrooms"></h:outputLabel>
+
+			<br />
+
+			<h:dataTable value="#{chatRoomList.roomListArray}" var="c">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+    				#{c.name}
+    			</h:column>
+				<h:column>
+					<f:facet name="header">Description</f:facet>
+    				#{c.description}
+    			</h:column>
+			</h:dataTable>
+
+			<br />
+			<br />
+
+			<h:outputLabel value="Create new chat"></h:outputLabel>
+			<h:panelGrid columns="2">
+				<h:outputText value="Chat Name"></h:outputText>
+				<h:inputText value="#{chatRoom.name}"></h:inputText>
+				<h:outputText value="Description"></h:outputText>
+				<h:inputText value="#{chatRoom.description}"></h:inputText>
+			</h:panelGrid>
+
+			<h:commandButton value="Create" action="#{chatRoomList.addRoom}"></h:commandButton>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

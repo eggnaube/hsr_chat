@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:outputLabel value="Welcome #{user.name} you are in #{chatRoom.name}"></h:outputLabel>
+
+		<script type="text/javascript">
+		
+        	setInterval("nextMessage()", 200); //update the chart every 200 ms               
+        
+        	function updateMessages(xhr, status, args) {
+           		 if(!args.ok) return;
+            	$('#chat').append('<div class="msg">[' +args.dateSent+ '] <strong>'+args.user+'</strong>: '+args.text+'</div>');
+        	}
+        
+    	</script>
+	
+        <div id="chat"></div> 
+		
+        <h:form prependId="false">
+        
+            <h:panelGrid columns="2">
+                <p:inputText value="#{message.message}" styleClass="messageInput"/>
+                <p:commandButton value="Send!" actionListener="#{chatRoom.addMessage}" oncomplete="$('.messageInput').val('').focus()" />
+            </h:panelGrid>
+            
+            <p:remoteCommand name="nextMessage" actionListener="#{messageBean.firstUnreadMessage}" oncomplete="updateMessages(xhr, status, args);"/>
+
+        </h:form>
+	</ui:define>
+</ui:composition>
+</html>
