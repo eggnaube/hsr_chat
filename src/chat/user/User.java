@@ -11,6 +11,8 @@ public class User implements Serializable {
 	protected String mail;
 	
 	protected Long updateTime;
+	
+	protected boolean loggedIn;
 
 	
 	public User()
@@ -65,6 +67,7 @@ public class User implements Serializable {
 
 	public boolean checkPassword(String password) {
 		if (this.password.equals(password)) {
+			loggedIn = true;
 			return true;
 		}
 		return false;
@@ -80,6 +83,11 @@ public class User implements Serializable {
 	public void setUpdateTime(Long updateTime)
 	{
 		this.updateTime = updateTime;
+	}
+	
+	public boolean isLoggedIn()
+	{
+		return loggedIn;
 	}
 
 	public boolean checkEntries() throws UserException {
