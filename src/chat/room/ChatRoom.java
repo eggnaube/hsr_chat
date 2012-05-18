@@ -12,7 +12,7 @@ import java.util.Set;
 
 import javax.faces.event.ActionEvent;
 
-import org.primefaces.context.RequestContext;
+import org.icefaces.application.PushRenderer;
 
 import chat.message.Message;
 import chat.user.User;
@@ -44,6 +44,12 @@ public class ChatRoom implements Serializable
 	 * Used to set the maximum no of messages
 	 */
 	private int messages_size = 25;
+	
+	
+	public ChatRoom()
+	{
+		PushRenderer.addCurrentSession(name);
+	}
 	
 
 	/**
@@ -89,6 +95,10 @@ public class ChatRoom implements Serializable
 	 */
 	public synchronized void addUser(User user)
 	{
+		Message message = new Message();
+		message.setMessage(user.getName() + " has joned");
+		messages.add(message);
+		
 		users.put(user.getName(), user);
 	}
 	
@@ -97,13 +107,17 @@ public class ChatRoom implements Serializable
 	 * @param userName name of the user.
 	 * @return void
 	 */
-	public synchronized Object removeUser(String userName)
+	public synchronized Object removeUser(User user)
 	{
-		return users.remove(userName);
+		Message message = new Message();
+		message.setMessage(user.getName() + " has left");
+		messages.add(message);
+		
+		return users.remove(user.getName());
 	}
 	
 	/**
-	 * returns a User object from userss list.
+	 * returns a User object from users list.
 	 * @param userName name of the user
 	 * @return chat.User
 	 */
@@ -156,6 +170,7 @@ public class ChatRoom implements Serializable
 	{
 		Message msg = FacesUtil.getRequest(new Message(), "message");
 		addMessage(msg);
+		PushRenderer.render(name);
 	}
 	
 	
@@ -172,38 +187,12 @@ public class ChatRoom implements Serializable
 		messages.add(msg);
 	}
 	
-	/**
-	 * returns a ListIterator object containing all the messages
-	 * @return java.util.ListIterator
-	 */	
-	public ListIterator<Message> getMessages()
+
+	public Message[] getMessages()
 	{
-		return messages.listIterator();
+		User user = FacesUtil.getSession(new User(), "user");
+		return getMessages(user.getUpdateTime());
 	}
-	
-	
-
-    public void firstUnreadMessage(ActionEvent evt) {
-       RequestContext ctx = RequestContext.getCurrentInstance();
-
-       User user = FacesUtil.getSession(new User(), "user");
-       
-       Message[] m = getMessages(user.getUpdateTime());
-       
-       
-       
-       ctx.addCallbackParam("ok", m!=null);
-       if(m==null)
-           return;
-       
-       
-       ctx.addCallbackParam("user", "Testuser");
-       ctx.addCallbackParam("dateSent", "Today");
-       ctx.addCallbackParam("text", "TestMessage");
-
-    }
-
-
 	
 	
 	/**

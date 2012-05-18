@@ -12,6 +12,12 @@ public class User implements Serializable {
 	
 	protected Long updateTime;
 
+	
+	public User()
+	{
+		updateTime = 0L;
+	}
+	
 
 	public String getLogin() {
 		if (login == null) {
@@ -66,6 +72,8 @@ public class User implements Serializable {
 	
 	public Long getUpdateTime()
 	{
+		if (updateTime == null)
+			return 0L;
 		return updateTime;
 	}
 	

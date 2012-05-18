@@ -1,17 +1,26 @@
 package chat.message;
 
+import java.io.Serializable;
 import chat.user.User;
 import chat.util.FacesUtil;
 
 /**
 Represents a Message sent by a user.
 */
-public class Message
+public class Message implements Serializable 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	* String used to store the name of a chatter
 	*/
 	private String chatterName = null;
+	
+	
+	
 	/**
 	* String containing message
 	*/
@@ -22,12 +31,14 @@ public class Message
 	*/
 	private long timeStamp;
 	
+	
 	/**
 	* Constructor of the Message
 	*/
 	public Message()
 	{
-		this.chatterName = FacesUtil.getSession(new User(), "user").getName();
+		User user = FacesUtil.getSession(new User(), "user");
+		chatterName = user.getName();
 	}
 	
 	/**
@@ -45,7 +56,7 @@ public class Message
 	 */
 	public void setMessage(String message)
 	{
-		this.timeStamp = System.currentTimeMillis();
+		this.timeStamp = System.currentTimeMillis() / 1000;
 		this.message = message;
 	}
 	

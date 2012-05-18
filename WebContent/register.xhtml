@@ -5,9 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+	
+<h:head>
+	<title>HSR</title>
+</h:head>
+<h:body>
 
-<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-	<ui:define name="content">
 		<h:form>
             <h:panelGrid columns="2">
                 <h:outputText value="Login"></h:outputText>
@@ -21,6 +24,5 @@
             </h:panelGrid>
             <h:commandButton value="Register" action="#{userManager.register}"></h:commandButton>
         </h:form>
-	</ui:define>
-</ui:composition>
+</h:body>
 </html>

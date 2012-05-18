@@ -42,7 +42,7 @@ public class UserManager {
 		}
 		if(result)
 			return "success";
-		return "fail";
+		return null;
 	}
 
 
@@ -77,7 +77,7 @@ public class UserManager {
 	public User login(String login, String password) throws UserException {
 		if ((login == null && password == null)
 				|| (login == "" && password == "")) {
-			return null;
+			throw new UserException();
 		}
 		User user = users.get(login);
 		if (user != null && user.checkPassword(password)) {

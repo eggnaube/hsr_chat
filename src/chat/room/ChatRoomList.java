@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 
+import chat.user.User;
 import chat.util.FacesUtil;
 
 /**
@@ -24,15 +25,21 @@ public class ChatRoomList
 	{
 		roomList = new HashMap<String, ChatRoom>();
 	}
-
+	
+	/**adds a new chat room object from the bean to the list
+	 * @return if the adding was successfully
+	 */
 	public synchronized String addRoom()
 	{
 		ChatRoom room = FacesUtil.getSession(new ChatRoom(), "chatRoom");
 		
 		if(!roomList.containsKey(room.getName()))
-			roomList.put(room.getName(), room);
+			addRoom(room);
+		else
+			room = roomList.get(room.getName());
 		
-		FacesUtil.setSession("chatRoom",  roomList.get(room.getName()));
+		room.addUser(FacesUtil.getSession(new User(), "user"));
+		FacesUtil.setSession("chatRoom", room);
 		
 		return "success";
 	}
