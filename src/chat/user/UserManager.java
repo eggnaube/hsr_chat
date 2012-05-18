@@ -66,7 +66,7 @@ public class UserManager {
 		try {
 			user = login(user.getLogin(),user.getPassword());
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Your Username or Password is wrong"));
+			FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Your Username or Password is wrong"));
 			return null;
 		}
 		

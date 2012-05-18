@@ -35,7 +35,8 @@ public class RestrictPageFilter implements Filter {
 		
 		User user = (User)session.getAttribute("user");
 		
-		if((user != null && user.isLoggedIn()) || pageRequested.contains("login.xhtml"))
+		if((user != null && user.isLoggedIn()) || pageRequested.contains("login.xhtml") ||
+				pageRequested.contains("register.xhtml"))
 			chain.doFilter(request, response);
 		else
 		{
