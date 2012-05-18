@@ -102,6 +102,12 @@ public class ChatRoom implements Serializable
 		users.put(user.getName(), user);
 	}
 	
+	public synchronized String removeUser()
+	{
+		removeUser(FacesUtil.getSession(new User(), "user"));
+		FacesUtil.setSession("chatRoom", null);
+		return "success";
+	}
 	/**
 	 * removes a User object from list of Users
 	 * @param userName name of the user.

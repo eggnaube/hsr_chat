@@ -20,7 +20,7 @@
 				<h:outputText value="Password"></h:outputText>
 				<h:inputSecret value="#{user.password}"></h:inputSecret>
 			</h:panelGrid>
-			<h:commandButton value="Login" action="#{userManager.login}"></h:commandButton>
+			<h:commandButton value="Login" action="#{userManager.login}" type="submit"></h:commandButton>
 			<h:commandButton value="Register" action="register"></h:commandButton>
 		</h:form>
 </h:body>

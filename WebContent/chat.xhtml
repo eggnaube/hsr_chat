@@ -24,10 +24,14 @@
 
 		<h:form prependId="false">
 			<h:panelGrid columns="2">
-				<h:inputText value="#{message.message}" styleClass="messageInput" /><h:commandButton value="Send!" actionListener="#{chatRoom.addMessage}" oncomplete="$('.messageInput').val('').focus()" />
-				
+				<h:inputText value="#{message.message}" styleClass="messageInput" />
+				<h:commandButton value="Send!" actionListener="#{chatRoom.addMessage}" oncomplete="$('.messageInput').val('').focus()" type="submit" />
 			</h:panelGrid>
-
+			<h:panelGrid columns="3">
+				<h:commandButton value="change Chat" action="#{chatRoom.removeUser}"/>
+				<h:commandButton value="find User"/>
+				<h:commandButton value="bla bla"/>
+			</h:panelGrid>
 		</h:form>
 </h:body>
 </html>

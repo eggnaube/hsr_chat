@@ -65,5 +65,14 @@
 			<to-view-id>/chat.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>chat.xhtml</display-name>
+		<from-view-id>/chat.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{chatRoom.removeUser}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
