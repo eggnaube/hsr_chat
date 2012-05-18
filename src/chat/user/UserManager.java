@@ -11,7 +11,7 @@ import chat.util.FacesUtil;
 public class UserManager {
 
 	protected Hashtable<String, User> users = new Hashtable<String, User>();
-	protected String userFilename = "c:/hsr/users.ser";
+	protected String userFilename = "/tmp/users.ser";
 	protected File userFile;
 
 	public UserManager() {
