@@ -1,49 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
-<link rel="stylesheet" type="text/css" media="screen,print"
-	href="${facesContext.externalContext.requestContextPath}/css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" media="screen,print"
-	href="${facesContext.externalContext.requestContextPath}/css/style.css" />
-<script type="text/javascript"
-	src="${facesContext.externalContext.requestContextPath}/js/jquery.js"></script>
-<script type="text/javascript"
-	src="${facesContext.externalContext.requestContextPath}/js/bootstrap.js"></script>
-
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-<title><ui:insert name="title">HSR Chat</ui:insert></title>
+  <title><ui:insert name="title">HSR Chat</ui:insert></title>
 </head>
 
 <body>
 
-	<div class="container">
-
-		<div id="header">
-			<ui:insert name="header">
-				<ui:include src="/WEB-INF/templates/header.xhtml" />
-			</ui:insert>
-		</div>
+<div id="header">
+    <ui:insert name="header">
+    	<ui:include src="/WEB-INF/templates/header.xhtml"/>
+    </ui:insert>
+</div>
 
 
-		<div id="content">
-			<div class="row">
-				<div class="span12 HC_content">
-					<ui:insert name="content">
-					</ui:insert>
-				</div>
-			</div>
-		</div>
+<div id="content">
+  <ui:insert name="content">
+  </ui:insert>
+</div>
 
-	</div>
-
-	<div id="footer" class="HC_footer">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/templates/footer.xhtml" />
-		</ui:insert>
-	</div>
-
+<div id="footer">
+  <ui:insert name="footer">
+    	<ui:include src="/WEB-INF/templates/footer.xhtml"/>
+  </ui:insert>
+</div>
 
 </body>
 
