@@ -5,46 +5,82 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-	
-<h:head>
-	<title>HSR</title>
-</h:head>
+
 <h:body>
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
 
-		<h:form>
-			<h:outputLabel value="Welcome #{user.name}"></h:outputLabel>
+			<h:form class="form-horizontal">
 
-			<br />
-			<br />
+				<div class="wrapper">
+					<h3>
+						<h:outputText value="Welcome #{user.name}" />
+					</h3>
+				</div>
+				
+				<p class="wrapper">Please choose one of the following opptions.</p>
 
-			<h:outputLabel value="Aviable Chatrooms"></h:outputLabel>
+				<div class="tabbable wrapper" id="hsr_chat_tab">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1" data-toggle="tab">Join
+								a chatroom</a></li>
+						<li><a href="#tab2" data-toggle="tab">Create new chatroom</a></li>
+					</ul>
 
-			<br />
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab1">
 
-			<h:dataTable value="#{chatRoomList.roomListArray}" var="c">
-				<h:column>
-					<f:facet name="header">Name</f:facet>
+
+							<div class="">
+								<h5>Available Chatrooms</h5>
+							</div>
+
+
+							<div class="">
+								<h:dataTable value="#{chatRoomList.roomListArray}" var="c"
+									class="table table-striped">
+									<h:column>
+										<f:facet name="header">Name</f:facet>
     				#{c.name}
     			</h:column>
-				<h:column>
-					<f:facet name="header">Description</f:facet>
+									<h:column>
+										<f:facet name="header">Description</f:facet>
     				#{c.description}
     			</h:column>
-			</h:dataTable>
+								</h:dataTable>
+							</div>
 
-			<br />
-			<br />
+						</div>
+						<div class="tab-pane" id="tab2">
 
-			<h:outputLabel value="Create new chat"></h:outputLabel>
-			<h:panelGrid columns="2">
-				<h:outputText value="Chat Name"></h:outputText>
-				<h:inputText value="#{chatRoom.name}"></h:inputText>
-				<h:outputText value="Description"></h:outputText>
-				<h:inputText value="#{chatRoom.description}"></h:inputText>
-			</h:panelGrid>
+							<div class="wrapper">
+								<h5>Create new chatroom</h5>
+							</div>
 
-			<h:commandButton value="Create" action="#{chatRoomList.addRoom}" type="submit"></h:commandButton>
-		</h:form>
+							<fieldset>
+								<div class="control-group">
+									<h:outputLabel value="Chat Name" class="control-label" />
+									<div class="controls">
+										<h:inputText value="#{chatRoom.name}" />
+									</div>
+								</div>
+								<div class="control-group">
+									<h:outputLabel value="Description" class="control-label" />
+									<div class="controls">
+										<h:inputText value="#{chatRoom.description}" />
+									</div>
+								</div>
+							</fieldset>
 
+							<div class="form-actions">
+								<h:commandButton value="Create" action="#{chatRoomList.addRoom}"
+									type="submit" class="btn btn-primary"></h:commandButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

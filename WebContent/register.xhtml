@@ -5,25 +5,45 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-	
-<h:head>
-	<title>HSR</title>
-</h:head>
+
 <h:body>
 
-		<h:form>
-            <h:panelGrid columns="2">
-                <h:outputText value="Login"></h:outputText>
-                <h:inputText value="#{user.login}"></h:inputText>
-                <h:outputText value="Name"></h:outputText>
-                <h:inputText value="#{user.name}"></h:inputText>
-                <h:outputText value="E-Mail"></h:outputText>
-                <h:inputText value="#{user.mail}"></h:inputText>
-                <h:outputText value="Password"></h:outputText>
-                <h:inputSecret value="#{user.password}"></h:inputSecret>
-            </h:panelGrid>
-            <h:commandButton value="Register" action="#{userManager.register}" type="submit"></h:commandButton>
-            <h:commandButton value="Back" action="back"></h:commandButton>
-        </h:form>
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form class="form-horizontal">
+				<h:messages class="alert alert-error"></h:messages>
+				<fieldset>
+					<div class="control-group">
+						<h:outputLabel value="Login" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputText value="#{user.login}"></h:inputText>
+						</div>
+					</div>
+					<div class="control-group">
+						<h:outputLabel value="Name" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputText value="#{user.name}"></h:inputText>
+						</div>
+					</div>
+					<div class="control-group">
+						<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputText value="#{user.mail}"></h:inputText>
+						</div>
+					</div>
+					<div class="control-group">
+						<h:outputLabel value="Password" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputSecret value="#{user.password}"></h:inputSecret>
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-actions">
+					<h:commandButton value="Register" action="#{userManager.register}"
+						class="btn btn-primary"></h:commandButton>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

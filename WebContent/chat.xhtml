@@ -6,32 +6,45 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<h:head>
-	<title>HSR</title>
-</h:head>
 <h:body>
-<br />
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
 
-<h:outputLabel
-			value="Welcome #{user.name} you are in #{chatRoom.name}"></h:outputLabel><br /><br />
+			<div class="row">
+				<div class="span12">
+					<h:outputLabel
+						value="Welcome #{user.name} you are in #{chatRoom.name}" />
+				</div>
+			</div>
 
-		<h:dataTable value="#{chatRoom.messages}" var="message">
-			<h:column>
-				<h:outputText value="#{message.timeStamp} #{message.chatterName} #{message.message}"/>
-			</h:column>
-		</h:dataTable>
+			<h:outputLabel
+				value="Welcome #{user.name} you are in #{chatRoom.name}"></h:outputLabel>
+			<br />
+			<br />
+
+			<h:dataTable value="#{chatRoom.messages}" var="message">
+				<h:column>
+					<h:outputText
+						value="#{message.timeStamp} #{message.chatterName} #{message.message}" />
+				</h:column>
+			</h:dataTable>
 
 
-		<h:form prependId="false">
-			<h:panelGrid columns="2">
-				<h:inputText value="#{message.message}" styleClass="messageInput" />
-				<h:commandButton value="Send!" actionListener="#{chatRoom.addMessage}" oncomplete="$('.messageInput').val('').focus()" type="submit" />
-			</h:panelGrid>
-			<h:panelGrid columns="3">
-				<h:commandButton value="change Chat" action="#{chatRoom.removeUser}"/>
-				<h:commandButton value="find User"/>
-				<h:commandButton value="bla bla"/>
-			</h:panelGrid>
-		</h:form>
+			<h:form prependId="false">
+				<h:panelGrid columns="2">
+					<h:inputText value="#{message.message}" styleClass="messageInput" />
+					<h:commandButton value="Send!"
+						actionListener="#{chatRoom.addMessage}"
+						oncomplete="$('.messageInput').val('').focus()" type="submit" />
+				</h:panelGrid>
+				<h:panelGrid columns="3">
+					<h:commandButton value="change Chat"
+						action="#{chatRoom.removeUser}" />
+					<h:commandButton value="find User" />
+					<h:commandButton value="bla bla" />
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
