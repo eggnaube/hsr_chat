@@ -9,40 +9,56 @@
 <h:body>
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 		<ui:define name="content">
-
-			<div class="row">
-				<div class="span12">
-					<h:outputLabel
-						value="Welcome #{user.name} you are in #{chatRoom.name}" />
+			<div class="wrapper">
+				<div class="row">
+					<div class="span12">
+						<h3>
+							<h:outputText
+								value="Welcome #{user.name} you are in #{chatRoom.name}" />
+						</h3>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper">
+				<div class="row">
+					<div class="span8 HC_chat">
+						<h:dataTable value="#{chatRoom.messages}" var="message">
+							<h:column>
+								<h:outputText
+									value="#{message.timeStamp} #{message.chatterName} #{message.message}" />
+							</h:column>
+						</h:dataTable>
+					</div>
 				</div>
 			</div>
 
-			<h:outputLabel
-				value="Welcome #{user.name} you are in #{chatRoom.name}"></h:outputLabel>
-			<br />
-			<br />
-
-			<h:dataTable value="#{chatRoom.messages}" var="message">
-				<h:column>
-					<h:outputText
-						value="#{message.timeStamp} #{message.chatterName} #{message.message}" />
-				</h:column>
-			</h:dataTable>
-
-
-			<h:form prependId="false">
-				<h:panelGrid columns="2">
-					<h:inputText value="#{message.message}" styleClass="messageInput" />
-					<h:commandButton value="Send!"
-						actionListener="#{chatRoom.addMessage}"
-						oncomplete="$('.messageInput').val('').focus()" type="submit" />
-				</h:panelGrid>
-				<h:panelGrid columns="3">
-					<h:commandButton value="change Chat"
-						action="#{chatRoom.removeUser}" />
-					<h:commandButton value="find User" />
-					<h:commandButton value="bla bla" />
-				</h:panelGrid>
+			<div class="wrapper">
+				<div class="row">
+					<div class="span8">
+						<h:form prependId="false">
+							<div class="controls">
+								<div class="input-append">
+									<h:inputText value="#{message.message}"
+										styleClass="messageInput" style="width: 554px"/>
+									<h:commandButton value="Send!"
+										actionListener="#{chatRoom.addMessage}"
+										oncomplete="$('.messageInput').val('').focus()" type="submit"
+										class="btn btn-primary" />
+								</div>
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+			<h:form>
+				<div class="form-actions">
+					<h:panelGrid columns="3">
+						<h:commandButton value="change Chat"
+							action="#{chatRoom.removeUser}" class="btn" />
+						<h:commandButton value="find User" class="btn" />
+						<h:commandButton value="bla bla" class="btn" />
+					</h:panelGrid>
+				</div>
 			</h:form>
 		</ui:define>
 	</ui:composition>
