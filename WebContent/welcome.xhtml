@@ -41,7 +41,9 @@
 									class="table table-striped">
 									<h:column>
 										<f:facet name="header">Name</f:facet>
-    				#{c.name}
+										<h:commandLink value="#{c.name}" action="#{chatRoomList.joinRoom(c.name)}">
+											<f:param name="room" value="#{c.name}"/>
+										</h:commandLink>
     			</h:column>
 									<h:column>
 										<f:facet name="header">Description</f:facet>

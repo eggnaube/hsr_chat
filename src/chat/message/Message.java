@@ -1,6 +1,8 @@
 package chat.message;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import chat.user.User;
 import chat.util.FacesUtil;
 
@@ -75,5 +77,13 @@ public class Message implements Serializable
 	public long getTimeStamp()
 	{
 		return timeStamp;
+	}
+	
+	/**
+	 * Returns the Date object of the message
+	 * @return Date
+	 */
+	public Date getMessageDate() {
+		return new Date(timeStamp*1000);
 	}
 }

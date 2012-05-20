@@ -27,13 +27,22 @@
 						<h:dataTable value="#{chatRoom.messages}" var="message">
 							<h:column>
 								<h:outputText
-									value="#{message.timeStamp} #{message.chatterName} #{message.message}" />
+									value="#{message.messageDate}">
+									<f:convertDateTime type="both" dateStyle="short"
+										timeStyle="short" />
+								</h:outputText>
+							</h:column>
+							<h:column>
+								<h:outputText value="#{message.chatterName}" />
+							</h:column>
+							<h:column>
+								<h:outputText value="#{message.message}" />
 							</h:column>
 						</h:dataTable>
 					</div>
 					<div class="span3 HC_chat_userlist">
 						<h:dataTable value="#{chatRoom.usersArray}" var="u"
-									class="table table-striped">
+									class="table table-bordered">
 							<h:column>
 								<f:facet name="header">User List</f:facet>
     							#{u.login}

@@ -43,6 +43,19 @@ public class ChatRoomList
 		
 		return "success";
 	}
+	
+	/**
+	 * Joins the actual user to a chat room.
+	 * @param roomName String
+	 * @return String
+	 */
+	public synchronized String joinRoom(String roomName) {
+		ChatRoom room = this.getRoom(roomName);
+		room.addUser(FacesUtil.getSession(User.class, "user"));
+		FacesUtil.setSession("chatRoom", room);
+		
+		return "chat.xhtml";
+	}
 
 	/**
 	 * adds new chat room object to a list of Rooms.

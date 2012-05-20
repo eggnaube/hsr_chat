@@ -52,7 +52,6 @@ body {
 }
 
 .HC_chat_userlist {
-	border: 1px solid #D6D6D6;
 	max-height: 260px;
 	overflow: auto;
 }
