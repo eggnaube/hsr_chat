@@ -27,7 +27,7 @@
 						<h:dataTable value="#{chatRoom.messages}" var="message">
 							<h:column>
 								<h:outputText
-									value="#{message.timeStamp} #{message.chatterName} #{message.message}" />
+									value="#{message.messageTime} #{message.chatterName} #{message.message}" />
 							</h:column>
 						</h:dataTable>
 					</div>

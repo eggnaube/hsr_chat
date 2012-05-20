@@ -1,6 +1,10 @@
 package chat.message;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import chat.user.User;
 import chat.util.FacesUtil;
 
@@ -19,7 +23,7 @@ public class Message implements Serializable
 	*/
 	private String chatterName = null;
 	
-	
+	private static final DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
 	
 	/**
 	* String containing message
@@ -56,7 +60,7 @@ public class Message implements Serializable
 	 */
 	public void setMessage(String message)
 	{
-		this.timeStamp = System.currentTimeMillis() / 1000;
+		this.timeStamp = System.currentTimeMillis();
 		this.message = message;
 	}
 	
@@ -76,4 +80,15 @@ public class Message implements Serializable
 	{
 		return timeStamp;
 	}
+	
+	public String getMessageTime()
+	{
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timeStamp);
+        
+        return formatter.format(calendar.getTime());
+
+	}
+	
+	
 }
