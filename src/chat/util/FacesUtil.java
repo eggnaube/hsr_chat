@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 public class FacesUtil {
 
 	@SuppressWarnings("unchecked")
-	public static <T> T  getRequest(T a, String name) {
+	public static <T> T  getRequest(final Class<T> clazz, final String name) {
 		try 
 		{
 			return (T) FacesContext.getCurrentInstance().getExternalContext()
@@ -24,7 +24,7 @@ public class FacesUtil {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> T  getSession(T a, String name) {
+	public static <T> T  getSession(final Class<T> clazz, final String name) {
 		try 
 		{
 			return (T) FacesContext.getCurrentInstance().getExternalContext()
@@ -43,7 +43,7 @@ public class FacesUtil {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> T  getApplication(T a, String name) {
+	public static <T> T  getApplication(final Class<T> clazz, final String name) {
 		return (T) FacesContext.getCurrentInstance().getExternalContext()
 				.getApplicationMap().get(name);
 

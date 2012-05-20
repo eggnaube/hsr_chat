@@ -104,7 +104,7 @@ public class ChatRoom implements Serializable
 	
 	public synchronized String removeUser()
 	{
-		removeUser(FacesUtil.getSession(new User(), "user"));
+		removeUser(FacesUtil.getSession(User.class, "user"));
 		FacesUtil.setSession("chatRoom", null);
 		return "success";
 	}
@@ -174,7 +174,7 @@ public class ChatRoom implements Serializable
 	 */
 	public synchronized void addMessage(ActionEvent evt)
 	{
-		Message msg = FacesUtil.getRequest(new Message(), "message");
+		Message msg = FacesUtil.getRequest(Message.class, "message");
 		addMessage(msg);
 		PushRenderer.render(name);
 	}
@@ -196,7 +196,7 @@ public class ChatRoom implements Serializable
 
 	public Message[] getMessages()
 	{
-		User user = FacesUtil.getSession(new User(), "user");
+		User user = FacesUtil.getSession(User.class, "user");
 		return getMessages(user.getUpdateTime());
 	}
 	

@@ -31,14 +31,14 @@ public class ChatRoomList
 	 */
 	public synchronized String addRoom()
 	{
-		ChatRoom room = FacesUtil.getSession(new ChatRoom(), "chatRoom");
+		ChatRoom room = FacesUtil.getSession(ChatRoom.class, "chatRoom");
 		
 		if(!roomList.containsKey(room.getName()))
 			addRoom(room);
 		else
 			room = roomList.get(room.getName());
 		
-		room.addUser(FacesUtil.getSession(new User(), "user"));
+		room.addUser(FacesUtil.getSession(User.class, "user"));
 		FacesUtil.setSession("chatRoom", room);
 		
 		return "success";

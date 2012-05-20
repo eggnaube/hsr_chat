@@ -32,7 +32,7 @@ public class UserManager {
 	
 	public String register() throws UserException {
 		
-		User user = FacesUtil.getSession(new User(), "user");
+		User user = FacesUtil.getSession(User.class, "user");
 
 		boolean result = false;
 		try {
@@ -61,7 +61,7 @@ public class UserManager {
 	
 	public String login() 
 	{
-		User user = FacesUtil.getSession(new User(), "user");
+		User user = FacesUtil.getSession(User.class, "user");
 		
 		try {
 			user = login(user.getLogin(),user.getPassword());
