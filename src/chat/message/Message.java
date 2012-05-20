@@ -1,9 +1,7 @@
 package chat.message;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 
 import chat.user.User;
 import chat.util.FacesUtil;
@@ -81,14 +79,11 @@ public class Message implements Serializable
 		return timeStamp;
 	}
 	
-	public String getMessageTime()
-	{
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(timeStamp);
-        
-        return formatter.format(calendar.getTime());
-
+	/**
+	 * Returns the Date object of the message
+	 * @return Date
+	 */
+	public Date getMessageDate() {
+		return new Date(timeStamp*1000);
 	}
-	
-	
 }
