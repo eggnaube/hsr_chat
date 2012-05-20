@@ -32,7 +32,13 @@
 						</h:dataTable>
 					</div>
 					<div class="span3 HC_chat_userlist">
-						USER LIST
+						<h:dataTable value="#{chatRoom.usersArray}" var="u"
+									class="table table-striped">
+							<h:column>
+								<f:facet name="header">User List</f:facet>
+    							#{u.login}
+    						</h:column>
+						</h:dataTable>
 					</div>
 				</div>
 			</div>
