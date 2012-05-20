@@ -5,6 +5,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
+	<application>
+		<locale-config>
+			<default-locale>de_CH</default-locale>
+			<supported-locale>en_US</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
 	<managed-bean>
 		<managed-bean-name>userManager</managed-bean-name>
 		<managed-bean-class>chat.user.UserManager</managed-bean-class>
@@ -29,6 +39,11 @@
 		<managed-bean-name>message</managed-bean-name>
 		<managed-bean-class>chat.message.Message</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>language</managed-bean-name>
+		<managed-bean-class>chat.language.Language</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
 		<display-name>login.xhtml</display-name>
