@@ -13,8 +13,10 @@
 				<div class="row">
 					<div class="span12">
 						<h3>
-							<h:outputText
-								value="Welcome #{user.name} you are in #{chatRoom.name}" />
+							<h:outputFormat value="#{msg['chat.title']}" >
+								<f:param value="#{user.name}"/>
+								<f:param value="#{chatRoom.name}"/>
+							</h:outputFormat>
 						</h3>
 					</div>
 				</div>

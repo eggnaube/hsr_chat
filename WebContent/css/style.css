@@ -25,6 +25,7 @@ body {
 	top: 20px;
 	font-weight: bold;
 	position: relative;
+	float: left;
 }
 
 .HC_content {
@@ -56,6 +57,26 @@ body {
 	background-color: black;
 	bottom: 0px;
 	position: absolute;
+}
+
+.HC_headBannerLanguage {
+	float: right;
+	margin: 20px;
+}
+
+.HC_headBannerLanguage a {
+	color: white;
+	margin-left: 10px;
+}
+
+.HC_headBannerLanguage a:ACTIVE, .HC_headBannerLanguage a:VISITED {
+	color: white;
+	text-decoration: none;
+}
+
+.HC_lang_active {
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 .wrapper {

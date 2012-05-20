@@ -9,6 +9,14 @@
 		<div class="span12">
 			<div class="HC_headBanner">
 				<div class="HC_headBannerText">HSR Chat</div>
+				<div class="HC_headBannerLanguage">
+					<h:form>
+						<h:commandLink value="DE" action="#{language.setLocaleCodeDe}"
+							class="#{language.localeCode eq 'de' ? 'HC_lang_active' : ''}" />
+						<h:commandLink value="EN" action="#{language.setLocaleCodeEn}"
+							class="#{language.localeCode eq 'en' ? 'HC_lang_active' : ''}" />
+					</h:form>
+				</div>
 			</div>
 		</div>
 	</div>
