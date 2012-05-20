@@ -82,6 +82,6 @@ public class Message implements Serializable
 	 * @return Date
 	 */
 	public Date getMessageDate() {
-		return new Date(timeStamp*1000);
+		return new Date(timeStamp);
 	}
 }
