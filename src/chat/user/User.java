@@ -14,24 +14,35 @@ public class User implements Serializable {
 	
 	protected boolean loggedIn;
 
-	
+	/**Default Constructor
+	 */
 	public User()
 	{
 		updateTime = 0L;
 	}
 	
-
+	/** returns the Login name from the user
+	 * @return String
+	 */
 	public String getLogin() {
 		if (login == null) {
 			return "";
 		}
 		return login;
 	}
-
+	
+	/**
+	 * sets the login name from the user
+	 * @param login
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	/**
+	 * returns the mail address form the user
+	 * @return String
+	 */
 	public String getMail() {
 		if (mail == null) {
 			return "";
@@ -39,10 +50,18 @@ public class User implements Serializable {
 		return mail;
 	}
 
+	/**
+	 * sets the mail address form the user
+	 * @param mail
+	 */
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
+	/**
+	 * returns the name of the user
+	 * @return String
+	 */
 	public String getName() {
 		if (name == null) {
 			return "";
@@ -50,10 +69,18 @@ public class User implements Serializable {
 		return name;
 	}
 
+	/**
+	 * sets the name of the user
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * return the password of the user
+	 * @return String
+	 */
 	public String getPassword() {
 		if (password == null) {
 			return "";
@@ -61,10 +88,19 @@ public class User implements Serializable {
 		return password;
 	}
 
+	/**
+	 * sets the password of the user
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * checks if the password is valid
+	 * @param password
+	 * @return boolean
+	 */
 	public boolean checkPassword(String password) {
 		if (this.password.equals(password)) {
 			loggedIn = true;
@@ -73,6 +109,10 @@ public class User implements Serializable {
 		return false;
 	}
 	
+	/**
+	 * returns the last update time
+	 * @return Long
+	 */
 	public Long getUpdateTime()
 	{
 		if (updateTime == null)
@@ -80,16 +120,29 @@ public class User implements Serializable {
 		return updateTime;
 	}
 	
+	/**
+	 * sets the update time
+	 * @param updateTime
+	 */
 	public void setUpdateTime(Long updateTime)
 	{
 		this.updateTime = updateTime;
 	}
 	
+	/**
+	 * return if the user is logged in
+	 * @return boolean
+	 */
 	public boolean isLoggedIn()
 	{
 		return loggedIn;
 	}
 
+	/**
+	 * checks if the user entries are valid
+	 * @return boolean
+	 * @throws UserException
+	 */
 	public boolean checkEntries() throws UserException {
 		if (login == null && password == null && name == null && mail == null)
 			return false;

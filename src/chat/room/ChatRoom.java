@@ -45,13 +45,14 @@ public class ChatRoom implements Serializable
 	 */
 	private int messages_size = 25;
 	
-	
+	/**
+	 * Default Constructor
+	 */
 	public ChatRoom()
 	{
 		PushRenderer.addCurrentSession(name);
 	}
 	
-
 	/**
 	 * Sets the Name of the room
 	 * @param name
@@ -102,6 +103,10 @@ public class ChatRoom implements Serializable
 		users.put(user.getName(), user);
 	}
 	
+	/**
+	 * removes a User object from list of Users
+	 * @return void
+	 */
 	public synchronized String removeUser()
 	{
 		removeUser(FacesUtil.getSession(User.class, "user"));
@@ -193,7 +198,10 @@ public class ChatRoom implements Serializable
 		messages.add(msg);
 	}
 	
-
+	/**
+	 * returns an array of messages sent after user updatetime
+	 * @return array of messages
+	 */
 	public Message[] getMessages()
 	{
 		User user = FacesUtil.getSession(User.class, "user");
@@ -204,7 +212,7 @@ public class ChatRoom implements Serializable
 	/**
 	 * returns an array of messages sent after given time
 	 * @param afterTimeStamp Time in milliseconds.
-	 * @return array
+	 * @return array of messages
 	 */	
 	public Message[] getMessages(long afterTimeStamp)
 	{

@@ -19,7 +19,7 @@ public class ChatRoomList
 	 */
 	private Map<String, ChatRoom> roomList;
 
-	/**
+	/**Default Constructor
 	 */
 	public ChatRoomList()
 	{
