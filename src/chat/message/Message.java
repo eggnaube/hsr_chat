@@ -21,8 +21,6 @@ public class Message implements Serializable
 	*/
 	private String chatterName = null;
 	
-	private static final DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-	
 	/**
 	* String containing message
 	*/
