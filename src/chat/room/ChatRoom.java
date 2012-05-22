@@ -44,7 +44,7 @@ public class ChatRoom implements Serializable
 	 * Used to set the maximum no of messages
 	 */
 	private int messages_size = 25;
-	
+
 	/**
 	 * Default Constructor
 	 */
@@ -52,7 +52,7 @@ public class ChatRoom implements Serializable
 	{
 		PushRenderer.addCurrentSession(name);
 	}
-	
+
 	/**
 	 * Sets the Name of the room
 	 * @param name
@@ -61,7 +61,7 @@ public class ChatRoom implements Serializable
 	{
 		this.name = name;
 	}
-	
+
 	/**
 	 * Returns name of the room
 	 * @return java.lang.String
@@ -70,7 +70,7 @@ public class ChatRoom implements Serializable
 	{
 		return name;
 	}
-	
+
 	/**
 	 * Sets the description of the room
 	 * @param description
@@ -79,7 +79,7 @@ public class ChatRoom implements Serializable
 	{
 		this.description = description;
 	}
-	
+
 	/**
 	 * Returns description of the room
 	 * @return java.lang.String
@@ -88,7 +88,7 @@ public class ChatRoom implements Serializable
 	{
 		return description;
 	}
-	
+
 	/**
 	 * adds a User object to list of Users
 	 * @param user User object
@@ -97,12 +97,12 @@ public class ChatRoom implements Serializable
 	public synchronized void addUser(User user)
 	{
 		Message message = new Message();
-		message.setMessage(user.getName() + " has joned");
+		message.setMessage(user.getLogin() + " has joned");
 		messages.add(message);
-		
-		users.put(user.getName(), user);
+
+		users.put(user.getLogin(), user);
 	}
-	
+
 	/**
 	 * removes a User object from list of Users
 	 * @return void
@@ -121,12 +121,12 @@ public class ChatRoom implements Serializable
 	public synchronized Object removeUser(User user)
 	{
 		Message message = new Message();
-		message.setMessage(user.getName() + " has left");
+		message.setMessage(user.getLogin() + " has left");
 		messages.add(message);
-		
-		return users.remove(user.getName());
+
+		return users.remove(user.getLogin());
 	}
-	
+
 	/**
 	 * returns a User object from users list.
 	 * @param userName name of the user
@@ -136,7 +136,7 @@ public class ChatRoom implements Serializable
 	{
 		return users.get(userName);
 	}
-	
+
 	/**
 	 * checks whether a user exists or not
 	 * @param userName name of the user to check
@@ -146,7 +146,7 @@ public class ChatRoom implements Serializable
 	{
 		return users.containsKey(userName);
 	}
-	
+
 	/**
 	 * returns total number of users in this room
 	 * @return int
@@ -155,7 +155,7 @@ public class ChatRoom implements Serializable
 	{
 		return users.size();
 	}
-	
+
 	/**
 	 * returns a Set containing all the Users in the room
 	 * @return java.util.Set
@@ -164,7 +164,7 @@ public class ChatRoom implements Serializable
 	{
 		return users.entrySet();
 	}
-	
+
 	/** returns an array containing all User objects
 	 * @return chat.User[]
 	 */
@@ -172,7 +172,7 @@ public class ChatRoom implements Serializable
 	{
 		return users.values().toArray(new User[0]); 
 	}
-	
+
 	/**
 	 * Add a Message to the room
 	 * @param evt
@@ -183,21 +183,24 @@ public class ChatRoom implements Serializable
 		addMessage(msg);
 		PushRenderer.render(name);
 	}
-	
-	
+
+
 	/** adds the message to the messages list
 	 * @param msg A Message Object
 	 * @return void
 	 */
 	public synchronized void addMessage(Message msg)
 	{
-		if(messages.size()==messages_size)
+		if (!msg.getMessage().isEmpty())
 		{
-			((LinkedList<Message>)messages).removeFirst();
+			if(messages.size()==messages_size)
+			{
+				((LinkedList<Message>)messages).removeFirst();
+			}
+			messages.add(msg);
 		}
-		messages.add(msg);
 	}
-	
+
 	/**
 	 * returns an array of messages sent after user updatetime
 	 * @return array of messages
@@ -207,8 +210,8 @@ public class ChatRoom implements Serializable
 		User user = FacesUtil.getSession(User.class, "user");
 		return getMessages(user.getUpdateTime());
 	}
-	
-	
+
+
 	/**
 	 * returns an array of messages sent after given time
 	 * @param afterTimeStamp Time in milliseconds.
@@ -235,8 +238,8 @@ public class ChatRoom implements Serializable
 		}
 		return arr;
 	}
-	
-	
+
+
 	/**
 	 * returns total number of messages in the messages List
 	 * @return int

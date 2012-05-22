@@ -37,6 +37,9 @@
 							<h:inputSecret value="#{user.password}"></h:inputSecret>
 						</div>
 					</div>
+					<h:panelGroup rendered="#{not userManager.adminDefined}" >
+							<h:outputLabel value="First registered user has admin rights" class="control-label"></h:outputLabel>
+					</h:panelGroup>
 				</fieldset>
 				<div class="form-actions">
 					<h:commandButton value="Register" action="#{userManager.register}"

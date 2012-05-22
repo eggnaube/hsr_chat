@@ -38,7 +38,7 @@ public class Message implements Serializable
 	public Message()
 	{
 		User user = FacesUtil.getSession(User.class, "user");
-		chatterName = user.getName();
+		chatterName = user.getLogin();
 	}
 	
 	/**

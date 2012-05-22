@@ -28,7 +28,21 @@ public class UserManager {
 		}
 	}
 	
-	
+	public String edit() {
+		User user = FacesUtil.getSession(User.class, "user");
+		
+		boolean result = false;
+		try {
+			result = register(user, true);
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "wrong", "wrong"));
+		}
+		if(result)
+			return "success";
+		return null;		
+		
+		
+	}
 	
 	public String register() throws UserException {
 		
@@ -36,7 +50,7 @@ public class UserManager {
 
 		boolean result = false;
 		try {
-			result = register(user);
+			result = register(user, false);
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "wrong", "wrong"));
 		}
@@ -45,13 +59,16 @@ public class UserManager {
 		return null;
 	}
 
-
-	public boolean register(User user) throws UserException {
-		if (users.get(user.getLogin()) != null) { // User existiert bereits
+	public boolean register(User user, boolean override) throws UserException 
+	{
+		if (users.get(user.getLogin()) != null && !override) {
 			throw new UserException();
 		}
 
-		if (user.checkEntries()) { // wirft UserException bei Fehler
+		if (user.checkEntries()) 
+		{
+			if (!isAdminDefined()) 
+				user.setAdmin(true);
 			users.put(user.getLogin(), user);
 			save();
 			return true;
@@ -96,5 +113,24 @@ public class UserManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public boolean isAdminDefined()
+	{
+		for (User u : users.values()) {
+			if (u.isAdmin())
+				return true;
+		}
+		return false;
+	}
+	
+	public User getUser(String login)
+	{
+		return users.get(login);
+	}
+	
+	
+	public User[] getUserArray()
+	{
+		return users.values().toArray(new User[]{});
 	}
 }

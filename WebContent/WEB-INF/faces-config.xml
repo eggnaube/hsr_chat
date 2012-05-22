@@ -97,5 +97,22 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>WEB-INF/templates/header.xhtml</display-name>
+		<from-view-id>/WEB-INF/templates/header.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>admin</from-outcome>
+			<to-view-id>/admin.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>admin.xhtml</display-name>
+		<from-view-id>/admin.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{userManager.edit}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

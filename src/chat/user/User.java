@@ -10,6 +10,10 @@ public class User implements Serializable {
 	protected String name;
 	protected String mail;
 	
+	protected String editUser;
+	
+	protected boolean admin;
+	
 	protected Long updateTime;
 	
 	protected boolean loggedIn;
@@ -157,5 +161,21 @@ public class User implements Serializable {
 		if (mail.indexOf("@") == -1)
 			throw new UserException();
 		return true;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public String getEditUser() {
+		return editUser;
+	}
+
+	public void setEditUser(String editUser) {
+		this.editUser = editUser;
 	}
 }
