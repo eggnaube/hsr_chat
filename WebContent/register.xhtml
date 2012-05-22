@@ -10,6 +10,12 @@
 
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 		<ui:define name="content">
+			<h:panelGroup rendered="#{not userManager.adminDefined}"
+				class="clearfix">
+				<div class="alert alert-info clearfix">
+					<h:outputText value="#{msg['login.admin']}" class="control-label" />
+				</div>
+			</h:panelGroup>
 			<h:form class="form-horizontal">
 				<h:messages class="alert alert-error"></h:messages>
 				<fieldset>
@@ -37,9 +43,6 @@
 							<h:inputSecret value="#{user.password}"></h:inputSecret>
 						</div>
 					</div>
-					<h:panelGroup rendered="#{not userManager.adminDefined}" >
-							<h:outputLabel value="First registered user has admin rights" class="control-label"></h:outputLabel>
-					</h:panelGroup>
 				</fieldset>
 				<div class="form-actions">
 					<h:commandButton value="Register" action="#{userManager.register}"

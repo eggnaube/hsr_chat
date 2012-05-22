@@ -27,47 +27,50 @@ public class UserManager {
 			}
 		}
 	}
-	
+
 	public String edit() {
 		User user = FacesUtil.getSession(User.class, "user");
-		
+
 		boolean result = false;
 		try {
 			result = register(user, true);
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "wrong", "wrong"));
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wrong",
+							"wrong"));
 		}
-		if(result)
+		if (result)
 			return "success";
-		return null;		
-		
-		
+		return null;
+
 	}
-	
+
 	public String register() throws UserException {
-		
+
 		User user = FacesUtil.getSession(User.class, "user");
 
 		boolean result = false;
 		try {
 			result = register(user, false);
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "wrong", "wrong"));
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wrong",
+							"wrong"));
 		}
-		if(result)
+		if (result)
 			return "success";
 		return null;
 	}
 
-	public boolean register(User user, boolean override) throws UserException 
-	{
+	public boolean register(User user, boolean override) throws UserException {
 		if (users.get(user.getLogin()) != null && !override) {
 			throw new UserException();
 		}
 
-		if (user.checkEntries()) 
-		{
-			if (!isAdminDefined()) 
+		if (user.checkEntries()) {
+			if (!isAdminDefined())
 				user.setAdmin(true);
 			users.put(user.getLogin(), user);
 			save();
@@ -75,18 +78,21 @@ public class UserManager {
 		}
 		return false;
 	}
-	
-	public String login() 
-	{
+
+	public String login() {
 		User user = FacesUtil.getSession(User.class, "user");
-		
+
 		try {
-			user = login(user.getLogin(),user.getPassword());
+			user = login(user.getLogin(), user.getPassword());
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Username or Password wrong", "Your Username or Password is wrong"));
+			FacesContext.getCurrentInstance().addMessage(
+					"login",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Username or Password wrong",
+							"Your Username or Password is wrong"));
 			return null;
 		}
-		
+
 		FacesUtil.setSession("user", user);
 		return "success";
 	}
@@ -114,23 +120,25 @@ public class UserManager {
 			e.printStackTrace();
 		}
 	}
-	public boolean isAdminDefined()
-	{
+
+	public boolean isAdminDefined() {
 		for (User u : users.values()) {
 			if (u.isAdmin())
 				return true;
 		}
 		return false;
 	}
-	
-	public User getUser(String login)
-	{
+
+	public User getUser(String login) {
 		return users.get(login);
 	}
-	
-	
-	public User[] getUserArray()
-	{
-		return users.values().toArray(new User[]{});
+
+	public User[] getUserArray() {
+		return users.values().toArray(new User[] {});
+	}
+
+	public String logOff() {
+		FacesUtil.setSession("user", null);
+		return "logoff";
 	}
 }

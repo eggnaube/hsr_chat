@@ -11,18 +11,21 @@
 				<div class="HC_headBannerText">HSR Chat</div>
 				<div class="HC_headBannerLanguage">
 					<h:form>
-						<h:commandLink value="DE" actionListener="#{language.setLocaleCodeDe}"
+						<h:commandLink value="DE"
+							actionListener="#{language.setLocaleCodeDe}"
 							class="#{language.localeCode eq 'de' ? 'HC_lang_active' : ''}" />
-						<h:commandLink value="EN" actionListener="#{language.setLocaleCodeEn}"
+						<h:commandLink value="EN"
+							actionListener="#{language.setLocaleCodeEn}"
 							class="#{language.localeCode eq 'en' ? 'HC_lang_active' : ''}" />
-						<h:panelGroup rendered="#{user.admin}" >
-							    <h:commandLink value="Admin" action="admin"> 
-    							</h:commandLink> 
+						<h:panelGroup rendered="#{user.admin}">
+							<h:commandLink value="Admin" action="admin">
+							</h:commandLink>
 						</h:panelGroup>
-						<h:panelGroup rendered="#{not user.admin and user.loggedIn}" >
-							    <h:commandLink value="Profile" action="admin"> 
-    							</h:commandLink> 
+						<h:panelGroup rendered="#{not user.admin and user.loggedIn}">
+							<h:commandLink value="Profile" action="admin">
+							</h:commandLink>
 						</h:panelGroup>
+						<h:commandLink value="Logoff" action="#{userManager.logOff}" rendered="#{user.loggedIn}" immediate="true"/>
 					</h:form>
 				</div>
 			</div>

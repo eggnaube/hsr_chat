@@ -114,5 +114,15 @@
 			<to-view-id>/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>WEB-INF/templates/header.xhtml</display-name>
+		<from-view-id>/WEB-INF/templates/header.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{userManager.logOff}</from-action>
+			<from-outcome>#{userManager.logOff}</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

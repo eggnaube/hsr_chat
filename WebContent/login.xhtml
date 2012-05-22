@@ -30,8 +30,9 @@
 				</fieldset>
 				<div class="form-actions">
 					<h:commandButton value="Login" action="#{userManager.login}"
-						type="submit" class="btn btn-primary"></h:commandButton>&nbsp;
-					<h:commandButton value="Register" action="register" class="btn"></h:commandButton>
+						type="submit" class="btn btn-primary" />
+					&nbsp;
+					<h:commandButton value="Register" action="register" class="btn" immediate="true" />
 				</div>
 			</h:form>
 		</ui:define>
