@@ -139,6 +139,6 @@ public class UserManager {
 
 	public String logOff() {
 		FacesUtil.setSession("user", null);
-		return "logoff";
+		return "login.xhtml";
 	}
 }

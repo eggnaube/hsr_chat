@@ -4,6 +4,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head></h:head>
+
 <h:body>
 	<div class="row">
 		<div class="span12">
@@ -25,7 +28,8 @@
 							<h:commandLink value="Profile" action="admin">
 							</h:commandLink>
 						</h:panelGroup>
-						<h:commandLink value="Logoff" action="#{userManager.logOff}" rendered="#{user.loggedIn}" immediate="true"/>
+						<h:commandLink value="Logoff" action="#{userManager.logOff}"
+							rendered="#{user.loggedIn}" immediate="true" />
 					</h:form>
 				</div>
 			</div>

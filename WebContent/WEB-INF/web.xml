@@ -19,6 +19,7 @@
 		<url-pattern>/chat.jsf</url-pattern>
 		<url-pattern>/welcome.xhtml</url-pattern>
 		<url-pattern>/chat.xhtml</url-pattern>
+		<url-pattern>/admin.xhtml</url-pattern>
 	</filter-mapping>
 
 
