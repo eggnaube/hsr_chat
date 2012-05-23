@@ -25,7 +25,7 @@
 						<li class="active"><a href="#tab1" data-toggle="tab">Edit
 								your Profile</a></li>
 						<h:panelGroup rendered="#{user.admin}">
-							<li><a href="#tab2" data-toggle="tab">User Manager</a></li>
+							<li render="#{user.admin}"><a href="#tab2" data-toggle="tab">User Manager</a></li>
 						</h:panelGroup>
 					</ul>
 

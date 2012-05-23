@@ -13,7 +13,7 @@
 				<h:messages class="alert alert-error"></h:messages>
 				<fieldset>
 					<div class="control-group">
-						<h:outputLabel value="Login" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['login.username']}" class="control-label"></h:outputLabel>
 						<div class="controls">
 							<h:inputText id="login" value="#{user.login}">
 								<f:validateLength minimum="4" />
@@ -22,17 +22,17 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<h:outputLabel value="Password" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['login.password']}" class="control-label"></h:outputLabel>
 						<div class="controls">
 							<h:inputSecret value="#{user.password}"></h:inputSecret>
 						</div>
 					</div>
 				</fieldset>
 				<div class="form-actions">
-					<h:commandButton value="Login" action="#{userManager.login}"
+					<h:commandButton value="#{msg['login.login']}" action="#{userManager.login}"
 						type="submit" class="btn btn-primary" />
 					&nbsp;
-					<h:commandButton value="Register" action="register" class="btn" immediate="true" />
+					<h:commandButton value="#{msg['login.register']}" action="register" class="btn" immediate="true" />
 				</div>
 			</h:form>
 		</ui:define>

@@ -14,17 +14,24 @@
 
 				<div class="wrapper">
 					<h3>
-						<h:outputText value="Welcome #{user.name}" />
+						<h:outputFormat value="#{msg['welcome.welcome']}">
+							<f:param value="#{user.name}" />
+						</h:outputFormat>
 					</h3>
 				</div>
-				
-				<p class="wrapper">Please choose one of the following opptions.</p>
+
+				<p class="wrapper">
+					<h:outputText value="#{msg['welcome.description']}" />
+				</p>
 
 				<div class="tabbable wrapper" id="hsr_chat_tab">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab">Join
-								a chatroom</a></li>
-						<li><a href="#tab2" data-toggle="tab">Create new chatroom</a></li>
+						<li class="active"><a href="#tab1" data-toggle="tab"> <h:outputText
+									value="#{msg['welcome.join']}" />
+						</a></li>
+						<li><a href="#tab2" data-toggle="tab"> <h:outputText
+									value="#{msg['welcome.new']}" />
+						</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -41,15 +48,16 @@
 									class="table table-striped">
 									<h:column>
 										<f:facet name="header">Name</f:facet>
-										<h:commandLink value="#{c.name}" action="#{chatRoomList.joinRoom(c.name)}">
-											<f:param name="room" value="#{c.name}"/>
+										<h:commandLink value="#{c.name}"
+											action="#{chatRoomList.joinRoom(c.name)}">
+											<f:param name="room" value="#{c.name}" />
 										</h:commandLink>
-    								</h:column>
+									</h:column>
 									<h:column>
 										<f:facet name="header">Description</f:facet>
     									#{c.description}
     								</h:column>
-    								<h:column>
+									<h:column>
 										<f:facet name="header">Active User</f:facet>
     									#{c.noOfUsers}
     								</h:column>
