@@ -10,9 +10,10 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
-import org.icefaces.application.PushRenderer;
 
 import chat.message.Message;
 import chat.user.User;
@@ -44,14 +45,6 @@ public class ChatRoom implements Serializable
 	 * Used to set the maximum no of messages
 	 */
 	private int messages_size = 25;
-
-	/**
-	 * Default Constructor
-	 */
-	public ChatRoom()
-	{
-		PushRenderer.addCurrentSession("all");
-	}
 
 	/**
 	 * Sets the Name of the room
@@ -181,7 +174,13 @@ public class ChatRoom implements Serializable
 	{
 		Message msg = FacesUtil.getRequest(Message.class, "message");
 		addMessage(msg);
-		PushRenderer.render("all");
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		String viewId = context.getViewRoot().getViewId();
+		ViewHandler handler = context.getApplication().getViewHandler();
+		UIViewRoot root = handler.createView(context, viewId);
+		root.setViewId(viewId);
+		context.setViewRoot(root);
 	}
 
 

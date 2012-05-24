@@ -97,45 +97,6 @@
     								</h:column>
 								</h:dataTable>
 							</div>
-							<h:panelGroup rendered="#{not empty user.editUser}">
-
-								<h:messages class="alert alert-error"></h:messages>
-								<fieldset>
-									<div class="control-group">
-										<h:outputLabel value="Login" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputText
-												value="#{userManager.getUser(user.editUser).login}"></h:inputText>
-										</div>
-									</div>
-									<div class="control-group">
-										<h:outputLabel value="Name" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputText
-												value="#{userManager.getUser(user.editUser).name}"></h:inputText>
-										</div>
-									</div>
-									<div class="control-group">
-										<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputText
-												value="#{userManager.getUser(user.editUser).mail}"></h:inputText>
-										</div>
-									</div>
-									<div class="control-group">
-										<h:outputLabel value="Password" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputSecret
-												value="#{userManager.getUser(user.editUser).password}"></h:inputSecret>
-										</div>
-									</div>
-
-								</fieldset>
-								<div class="form-actions">
-									<h:commandButton value="Save" action="#{userManager.edit}"
-										class="btn btn-primary" />
-								</div>
-							</h:panelGroup>
 						</div>
 					</div>
 				</div>
