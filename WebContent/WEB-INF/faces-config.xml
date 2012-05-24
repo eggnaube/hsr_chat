@@ -106,11 +106,35 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<display-name>admin.xhtml</display-name>
-		<from-view-id>/admin.xhtml</from-view-id>
+		<display-name>WEB-INF/templates/header.xhtml</display-name>
+		<from-view-id>/WEB-INF/templates/header.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>profile</from-outcome>
+			<to-view-id>/profile.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
 		<navigation-case>
 			<from-action>#{userManager.edit}</from-action>
 			<from-outcome>success</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancel</from-outcome>
+			<to-view-id>/welcome.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>admin.xhtml</display-name>
+		<from-view-id>/admin.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancel</from-outcome>
 			<to-view-id>/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

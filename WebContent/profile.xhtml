@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form class="form-horizontal">
+
+				<div class="wrapper">
+					<h3>
+						<h:outputText value="Welcome #{user.name}" />
+					</h3>
+				</div>
+
+				<h:messages class="alert alert-error"></h:messages>
+
+				<fieldset>
+					<div class="control-group">
+						<h:outputLabel value="Login" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputText value="#{user.login}"></h:inputText>
+						</div>
+					</div>
+					<div class="control-group">
+						<h:outputLabel value="Name" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputText value="#{user.name}"></h:inputText>
+						</div>
+					</div>
+					<div class="control-group">
+						<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputText value="#{user.mail}"></h:inputText>
+						</div>
+					</div>
+					<div class="control-group">
+						<h:outputLabel value="Password" class="control-label"></h:outputLabel>
+						<div class="controls">
+							<h:inputSecret value="#{user.password}"></h:inputSecret>
+						</div>
+					</div>
+
+				</fieldset>
+				<div class="form-actions">
+					<h:commandButton value="Save" action="#{userManager.edit}"
+						class="btn btn-primary" />
+				<h:commandButton value="Cancel" action="cancel"
+						class="btn" />
+				</div>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
