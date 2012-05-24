@@ -50,7 +50,7 @@ public class ChatRoom implements Serializable
 	 */
 	public ChatRoom()
 	{
-		PushRenderer.addCurrentSession(name);
+		PushRenderer.addCurrentSession("all");
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class ChatRoom implements Serializable
 	{
 		Message msg = FacesUtil.getRequest(Message.class, "message");
 		addMessage(msg);
-		PushRenderer.render(name);
+		PushRenderer.render("all");
 	}
 
 
