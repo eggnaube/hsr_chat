@@ -141,6 +141,12 @@ public class UserManager {
 		users.get(login).setEditable(true);
 		return null;
 	}
+	
+	public String deleteAction(String login) {
+		users.remove(login);
+		save();
+		return null;
+	}
 
 	public String saveAction() {
 		 

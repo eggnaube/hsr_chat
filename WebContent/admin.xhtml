@@ -38,11 +38,11 @@
 						<h:inputText value="#{u.mail}" size="10" rendered="#{u.editable}" />
 						<h:outputText value="#{u.mail}" rendered="#{not u.editable}" />
 					</h:column>
+
 					<h:column>
 						<f:facet name="header">Action</f:facet>
-						<h:commandLink value="Edit"
-							action="#{userManager.editAction(u.login)}"
-							rendered="#{not u.editable}" />
+						<h:commandLink value="Delete" action="#{userManager.deleteAction(u.login)}" rendered="#{not u.editable}" />
+						<h:commandLink value="Edit" action="#{userManager.editAction(u.login)}" rendered="#{not u.editable}" />	
 					</h:column>
 				</h:dataTable>
 				<div class="form-actions">
