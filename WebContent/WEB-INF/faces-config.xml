@@ -63,15 +63,6 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<display-name>register.xhtml</display-name>
-		<from-view-id>/register.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{userManager.register}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
 		<display-name>welcome.xhtml</display-name>
 		<from-view-id>/welcome.xhtml</from-view-id>
 		<navigation-case>
@@ -136,6 +127,15 @@
 		<navigation-case>
 			<from-outcome>cancel</from-outcome>
 			<to-view-id>/welcome.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>register.xhtml</display-name>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{userManager.register}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

@@ -90,8 +90,9 @@ public class ChatRoom implements Serializable
 	public synchronized void addUser(User user)
 	{
 		Message message = new Message();
-		message.setMessage(user.getLogin() + " has joned");
+		message.setMessage(" has joned");
 		messages.add(message);
+		user.setUpdateTime(message.getTimeStamp());
 
 		users.put(user.getLogin(), user);
 	}
