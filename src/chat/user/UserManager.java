@@ -136,6 +136,29 @@ public class UserManager {
 	public User[] getUserArray() {
 		return users.values().toArray(new User[] {});
 	}
+	
+	public String editAction(String login) {
+		users.get(login).setEditable(true);
+		return null;
+	}
+	
+	public String deleteAction(String login) {
+		users.remove(login);
+		save();
+		return null;
+	}
+
+	public String saveAction() {
+		 
+		//get all existing value but set "editable" to false 
+		for (User user : users.values()){
+			user.setEditable(false);
+		}
+		save();
+		//return to current page
+		return null;
+	}
+
 
 	public String logOff() {
 		FacesUtil.setSession("user", null);

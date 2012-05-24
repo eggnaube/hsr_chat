@@ -12,6 +12,8 @@ public class User implements Serializable {
 	
 	protected String editUser;
 	
+	protected boolean editable;
+	
 	protected boolean admin;
 	
 	protected Long updateTime;
@@ -177,5 +179,13 @@ public class User implements Serializable {
 
 	public void setEditUser(String editUser) {
 		this.editUser = editUser;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 }

@@ -24,8 +24,8 @@
 							<h:commandLink value="Admin" action="admin">
 							</h:commandLink>
 						</h:panelGroup>
-						<h:panelGroup rendered="#{not user.admin and user.loggedIn}">
-							<h:commandLink value="Profile" action="admin">
+						<h:panelGroup rendered="#{user.loggedIn}">
+							<h:commandLink value="Profile" action="profile">
 							</h:commandLink>
 						</h:panelGroup>
 						<h:commandLink value="Logoff" action="#{userManager.logOff}"

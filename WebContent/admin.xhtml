@@ -17,128 +17,40 @@
 						<h:outputText value="Welcome #{user.name} in Admin Zone" />
 					</h3>
 				</div>
+				
+				<h:messages class="alert alert-error"></h:messages>
+				
 
-				<p class="wrapper">Please choose one of the following options.</p>
+				<h:dataTable value="#{userManager.userArray}" var="u"
+					class="table table-striped">
+					<h:column>
+						<f:facet name="header">Login</f:facet>
+						<h:inputText value="#{u.login}" size="10" rendered="#{u.editable}" />
+						<h:outputText value="#{u.login}" rendered="#{not u.editable}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Name</f:facet>
+						<h:inputText value="#{u.name}" size="10" rendered="#{u.editable}" />
+						<h:outputText value="#{u.name}" rendered="#{not u.editable}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Mail</f:facet>
+						<h:inputText value="#{u.mail}" size="10" rendered="#{u.editable}" />
+						<h:outputText value="#{u.mail}" rendered="#{not u.editable}" />
+					</h:column>
 
-				<div class="tabbable wrapper" id="hsr_chat_tab">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab">Edit
-								your Profile</a></li>
-						<h:panelGroup rendered="#{user.admin}">
-							<li render="#{user.admin}"><a href="#tab2" data-toggle="tab">User Manager</a></li>
-						</h:panelGroup>
-					</ul>
-
-					<div class="tab-content">
-						<div class="tab-pane active" id="tab1">
-
-
-							<div class="">
-								<h5>Your Profile</h5>
-							</div>
-
-							<h:messages class="alert alert-error"></h:messages>
-							
-							<fieldset>
-								<div class="control-group">
-									<h:outputLabel value="Login" class="control-label"></h:outputLabel>
-									<div class="controls">
-										<h:inputText value="#{user.login}"></h:inputText>
-									</div>
-								</div>
-								<div class="control-group">
-									<h:outputLabel value="Name" class="control-label"></h:outputLabel>
-									<div class="controls">
-										<h:inputText value="#{user.name}"></h:inputText>
-									</div>
-								</div>
-								<div class="control-group">
-									<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
-									<div class="controls">
-										<h:inputText value="#{user.mail}"></h:inputText>
-									</div>
-								</div>
-								<div class="control-group">
-									<h:outputLabel value="Password" class="control-label"></h:outputLabel>
-									<div class="controls">
-										<h:inputSecret value="#{user.password}"></h:inputSecret>
-									</div>
-								</div>
-
-							</fieldset>
-							<div class="form-actions">
-								<h:commandButton value="Save" action="#{userManager.edit}"
-									class="btn btn-primary" />
-							</div>
-
-						</div>
-
-						<div class="tab-pane" id="tab2">
-							<div class="wrapper">
-								<h5>User Manager</h5>
-							</div>
-							<div class="">
-								<h:dataTable value="#{userManager.userArray}" var="u"
-									class="table table-striped">
-									<h:column>
-										<f:facet name="header">Login</f:facet>
-										<h:commandLink value="#{u.login}"
-											actionListener="#{user.setEditUser(c.login)}">
-											<f:param name="login" value="#{u.login}" />
-										</h:commandLink>
-									</h:column>
-									<h:column>
-										<f:facet name="header">Name</f:facet>
-    									#{u.name}
-    								</h:column>
-									<h:column>
-										<f:facet name="header">Mail</f:facet>
-    									#{u.mail}
-    								</h:column>
-								</h:dataTable>
-							</div>
-							<h:panelGroup rendered="#{not empty user.editUser}">
-
-								<h:messages class="alert alert-error"></h:messages>
-								<fieldset>
-									<div class="control-group">
-										<h:outputLabel value="Login" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputText
-												value="#{userManager.getUser(user.editUser).login}"></h:inputText>
-										</div>
-									</div>
-									<div class="control-group">
-										<h:outputLabel value="Name" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputText
-												value="#{userManager.getUser(user.editUser).name}"></h:inputText>
-										</div>
-									</div>
-									<div class="control-group">
-										<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputText
-												value="#{userManager.getUser(user.editUser).mail}"></h:inputText>
-										</div>
-									</div>
-									<div class="control-group">
-										<h:outputLabel value="Password" class="control-label"></h:outputLabel>
-										<div class="controls">
-											<h:inputSecret
-												value="#{userManager.getUser(user.editUser).password}"></h:inputSecret>
-										</div>
-									</div>
-
-								</fieldset>
-								<div class="form-actions">
-									<h:commandButton value="Save" action="#{userManager.edit}"
-										class="btn btn-primary" />
-								</div>
-							</h:panelGroup>
-						</div>
-					</div>
+					<h:column>
+						<f:facet name="header">Action</f:facet>
+						<h:commandLink value="Delete" action="#{userManager.deleteAction(u.login)}" rendered="#{not u.editable}" />
+						<h:commandLink value="Edit" action="#{userManager.editAction(u.login)}" rendered="#{not u.editable}" />	
+					</h:column>
+				</h:dataTable>
+				<div class="form-actions">
+					<h:commandButton value="Save" action="#{userManager.saveAction}" class="btn btn-primary" />
+					<h:commandButton value="Cancel" action="cancel" class="btn" />
 				</div>
+				
+
 			</h:form>
 		</ui:define>
 	</ui:composition>
