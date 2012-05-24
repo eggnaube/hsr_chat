@@ -12,7 +12,7 @@ public class Language implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String localeCode = "de";
+	private String localeCode = "en";
 
 	private static Map<String, Object> countries;
 	static {

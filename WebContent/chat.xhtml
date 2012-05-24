@@ -44,7 +44,9 @@
 						<h:dataTable value="#{chatRoom.usersArray}" var="u"
 									class="table table-bordered">
 							<h:column>
-								<f:facet name="header">User List</f:facet>
+								<f:facet name="header">
+								<h:outputText value="#{msg['chat.userlist']}"/>
+								</f:facet>
     							#{u.login}
     						</h:column>
 						</h:dataTable>
