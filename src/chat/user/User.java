@@ -25,6 +25,7 @@ public class User implements Serializable {
 	public User()
 	{
 		updateTime = 0L;
+		editable = false;
 	}
 	
 	/** returns the Login name from the user

@@ -24,25 +24,34 @@
 					<div class="control-group">
 						<h:outputLabel value="Login" class="control-label"></h:outputLabel>
 						<div class="controls">
-							<h:inputText value="#{user.login}"></h:inputText>
+							<h:inputText value="#{user.login}" label="Login">
+								<f:validateLength minimum="4" />
+							</h:inputText>
 						</div>
 					</div>
 					<div class="control-group">
 						<h:outputLabel value="Name" class="control-label"></h:outputLabel>
 						<div class="controls">
-							<h:inputText value="#{user.name}"></h:inputText>
+							<h:inputText value="#{user.name}" label="Username">
+								<f:validateRequired/>
+							</h:inputText>
 						</div>
 					</div>
 					<div class="control-group">
 						<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
 						<div class="controls">
-							<h:inputText value="#{user.mail}"></h:inputText>
+							<h:inputText value="#{user.mail}" label="Mail">
+								<f:validateRequired/>
+								<f:validator validatorId="chat.validator.EmailValidator" />
+							</h:inputText>
 						</div>
 					</div>
 					<div class="control-group">
 						<h:outputLabel value="Password" class="control-label"></h:outputLabel>
 						<div class="controls">
-							<h:inputSecret value="#{user.password}"></h:inputSecret>
+							<h:inputSecret value="#{user.password}" label="Password">
+								<f:validateRequired />
+							</h:inputSecret>
 						</div>
 					</div>
 
@@ -52,7 +61,7 @@
 						class="btn btn-primary" />
 						&nbsp;
 				<h:commandButton value="Cancel" action="cancel"
-						class="btn" />
+						class="btn" immediate="true"/>
 				</div>
 
 			</h:form>

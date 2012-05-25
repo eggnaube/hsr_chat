@@ -15,16 +15,19 @@
 					<div class="control-group">
 						<h:outputLabel value="#{msg['login.username']}" class="control-label"></h:outputLabel>
 						<div class="controls">
-							<h:inputText id="login" value="#{user.login}">
+							<h:inputText id="login" value="#{user.login}" label="Login">
 								<f:validateLength minimum="4" />
+								<f:validateRequired/>
 								<h:message for="login"></h:message>
 							</h:inputText>
 						</div>
 					</div>
 					<div class="control-group">
-						<h:outputLabel value="#{msg['login.password']}" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['login.password']}" class="control-label" label="Password"></h:outputLabel>
 						<div class="controls">
-							<h:inputSecret value="#{user.password}"></h:inputSecret>
+							<h:inputSecret value="#{user.password}" label="Password">
+								<f:validateRequired/>
+							</h:inputSecret>
 						</div>
 					</div>
 				</fieldset>
