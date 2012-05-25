@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:body>
 	<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
@@ -13,9 +14,9 @@
 				<div class="row">
 					<div class="span12">
 						<h3>
-							<h:outputFormat value="#{msg['chat.title']}" >
-								<f:param value="#{user.login}"/>
-								<f:param value="#{chatRoom.name}"/>
+							<h:outputFormat value="#{msg['chat.title']}">
+								<f:param value="#{user.login}" />
+								<f:param value="#{chatRoom.name}" />
 							</h:outputFormat>
 						</h3>
 					</div>
@@ -24,28 +25,30 @@
 			<div class="wrapper">
 				<div class="row">
 					<div class="span8 HC_chat">
-						<h:dataTable value="#{chatRoom.messages}" var="message">
-							<h:column>
-								<h:outputText
-									value="#{message.messageDate}">
-									<f:convertDateTime type="both" dateStyle="short"
-										timeStyle="short" />
-								</h:outputText>
-							</h:column>
-							<h:column>
-								<h:outputText value="#{message.chatterName}" />
-							</h:column>
-							<h:column>
-								<h:outputText value="#{message.message}" />
-							</h:column>
-						</h:dataTable>
+						<h:form id="form">
+							<h:dataTable value="#{chatRoom.messages}" var="message" id="messageTable">
+								<h:column>
+									<h:outputText value="#{message.messageDate}">
+										<f:convertDateTime type="both" dateStyle="short"
+											timeStyle="short" />
+									</h:outputText>
+								</h:column>
+								<h:column>
+									<h:outputText value="#{message.chatterName}" />
+								</h:column>
+								<h:column>
+									<h:outputText value="#{message.message}" />
+								</h:column>
+							</h:dataTable>
+							<p:poll interval="3" update="messageTable" />
+						</h:form>
 					</div>
 					<div class="span3 HC_chat_userlist">
 						<h:dataTable value="#{chatRoom.usersArray}" var="u"
-									class="table table-bordered">
+							class="table table-bordered">
 							<h:column>
 								<f:facet name="header">
-								<h:outputText value="#{msg['chat.userlist']}"/>
+									<h:outputText value="#{msg['chat.userlist']}" />
 								</f:facet>
     							#{u.login}
     						</h:column>
@@ -61,7 +64,7 @@
 							<div class="controls">
 								<div class="input-append">
 									<h:inputText value="#{message.message}"
-										styleClass="messageInput" style="width: 554px"/>
+										styleClass="messageInput" style="width: 554px" />
 									<h:commandButton value="Send!"
 										actionListener="#{chatRoom.addMessage}"
 										oncomplete="$('.messageInput').val('').focus()" type="submit"
