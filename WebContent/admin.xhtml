@@ -20,22 +20,28 @@
 				
 				<h:messages class="alert alert-error"></h:messages>
 				
-
 				<h:dataTable value="#{userManager.userArray}" var="u"
 					class="table table-striped">
 					<h:column>
 						<f:facet name="header">Login</f:facet>
-						<h:inputText value="#{u.login}" size="10" rendered="#{u.editable}" />
+						<h:inputText value="#{u.login}" size="10" rendered="#{u.editable}" label="Login">
+							<f:validateLength minimum="4" />
+						</h:inputText>
 						<h:outputText value="#{u.login}" rendered="#{not u.editable}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Name</f:facet>
-						<h:inputText value="#{u.name}" size="10" rendered="#{u.editable}" />
+						<h:inputText value="#{u.name}" size="10" rendered="#{u.editable}" label="Username">
+							<f:validateRequired/>
+						</h:inputText>
 						<h:outputText value="#{u.name}" rendered="#{not u.editable}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Mail</f:facet>
-						<h:inputText value="#{u.mail}" size="10" rendered="#{u.editable}" />
+						<h:inputText value="#{u.mail}" size="10" rendered="#{u.editable}" label="Mail">
+							<f:validateRequired/>
+							<f:validator validatorId="chat.validator.EmailValidator" />
+						</h:inputText>
 						<h:outputText value="#{u.mail}" rendered="#{not u.editable}" />
 					</h:column>
 
@@ -48,7 +54,7 @@
 				<div class="form-actions">
 					<h:commandButton value="Save" action="#{userManager.saveAction}" class="btn btn-primary" />
 					&nbsp;
-					<h:commandButton value="Cancel" action="cancel" class="btn" />
+					<h:commandButton value="Cancel" action="cancel" class="btn" immediate="true" />
 				</div>
 				
 

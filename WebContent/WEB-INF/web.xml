@@ -34,11 +34,11 @@
 		<param-value>Development</param-value>
 	</context-param>
 	
-	<context-param> 
-    	<param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name> 
-    	<param-value>0</param-value> 
+	<context-param>
+		<param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+ 		<param-value>true</param-value>
 	</context-param>
-
+	
 	<!-- Welcome page -->
 	<welcome-file-list>
 		<welcome-file>login.jsf</welcome-file>
