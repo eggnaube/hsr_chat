@@ -14,49 +14,63 @@
 
 				<div class="wrapper">
 					<h3>
-						<h:outputText value="Welcome #{user.name} in Admin Zone" />
+						<h:outputFormat value="#{msg['admin.welcome']}">
+							<f:param value="#{user.name}" />
+						</h:outputFormat>
 					</h3>
 				</div>
-				
-				<h:messages class="alert alert-error"></h:messages>
-				
-				<h:dataTable value="#{userManager.userArray}" var="u"
-					class="table table-striped">
-					<h:column>
-						<f:facet name="header">Login</f:facet>
-						<h:inputText value="#{u.login}" size="10" rendered="#{u.editable}" label="Login">
-							<f:validateLength minimum="4" />
-						</h:inputText>
-						<h:outputText value="#{u.login}" rendered="#{not u.editable}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Name</f:facet>
-						<h:inputText value="#{u.name}" size="10" rendered="#{u.editable}" label="Username">
-							<f:validateRequired/>
-						</h:inputText>
-						<h:outputText value="#{u.name}" rendered="#{not u.editable}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Mail</f:facet>
-						<h:inputText value="#{u.mail}" size="10" rendered="#{u.editable}" label="Mail">
-							<f:validateRequired/>
-							<f:validator validatorId="chat.validator.EmailValidator" />
-						</h:inputText>
-						<h:outputText value="#{u.mail}" rendered="#{not u.editable}" />
-					</h:column>
 
-					<h:column>
-						<f:facet name="header">Action</f:facet>
-						<h:commandLink value="Delete" action="#{userManager.deleteAction(u.login)}" rendered="#{not u.editable}" />
-						<h:commandLink value="Edit" action="#{userManager.editAction(u.login)}" rendered="#{not u.editable}" />	
-					</h:column>
-				</h:dataTable>
-				<div class="form-actions">
-					<h:commandButton value="Save" action="#{userManager.saveAction}" class="btn btn-primary" />
-					&nbsp;
-					<h:commandButton value="Cancel" action="cancel" class="btn" immediate="true" />
+				<h:messages class="alert alert-error"></h:messages>
+
+				<div class="wrapper">
+					<h:dataTable value="#{userManager.userArray}" var="u"
+						class="table table-striped">
+						<h:column>
+							<f:facet name="header">#{msg['login.username']}</f:facet>
+							<h:inputText value="#{u.login}" size="10"
+								rendered="#{u.editable}" label="Login">
+								<f:validateLength minimum="4" />
+							</h:inputText>
+							<h:outputText value="#{u.login}" rendered="#{not u.editable}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg['login.name']}</f:facet>
+							<h:inputText value="#{u.name}" size="10" rendered="#{u.editable}"
+								label="Username">
+								<f:validateRequired />
+							</h:inputText>
+							<h:outputText value="#{u.name}" rendered="#{not u.editable}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{msg['profile.email']}</f:facet>
+							<h:inputText value="#{u.mail}" size="10" rendered="#{u.editable}"
+								label="Mail">
+								<f:validateRequired />
+								<f:validator validatorId="chat.validator.EmailValidator" />
+							</h:inputText>
+							<h:outputText value="#{u.mail}" rendered="#{not u.editable}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">#{msg['admin.action']}</f:facet>
+							<h:commandLink value="Delete"
+								action="#{userManager.deleteAction(u.login)}"
+								rendered="#{not u.editable}" class="btn btn-danger" />&nbsp;
+							<h:commandLink value="Edit"
+								action="#{userManager.editAction(u.login)}"
+								rendered="#{not u.editable}" class="btn"/>
+						</h:column>
+					</h:dataTable>
 				</div>
-				
+
+				<div class="form-actions">
+					<h:commandButton value="#{msg['profile.save']}"
+						action="#{userManager.saveAction}" class="btn btn-primary" />
+					&nbsp;
+					<h:commandButton value="#{msg['profile.cancel']}" action="cancel"
+						class="btn" immediate="true" />
+				</div>
+
 
 			</h:form>
 		</ui:define>

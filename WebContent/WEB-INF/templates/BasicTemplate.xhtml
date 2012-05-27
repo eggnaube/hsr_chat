@@ -19,7 +19,7 @@
 	src="${facesContext.externalContext.requestContextPath}/js/script.js"></script>
 
 <h:head>
-<title><ui:insert name="title">HSR Chat</ui:insert></title>
+	<title><ui:insert name="title">HSR Chat</ui:insert></title>
 </h:head>
 
 <h:body>
@@ -41,14 +41,16 @@
 			</div>
 		</div>
 
+		<div id="footer">
+			<div class="row">
+				<div class="span12 HC_footer">
+					<ui:insert name="footer">
+						<ui:include src="/WEB-INF/templates/footer.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div id="footer" class="HC_footer" style="display: none;">
-		<ui:insert name="footer">
-			<ui:include src="/WEB-INF/templates/footer.xhtml" />
-		</ui:insert>
-	</div>
-
 
 </h:body>
 

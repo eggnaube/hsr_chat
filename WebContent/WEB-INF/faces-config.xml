@@ -94,6 +94,7 @@
 		<navigation-case>
 			<from-outcome>admin</from-outcome>
 			<to-view-id>/admin.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
@@ -102,6 +103,7 @@
 		<navigation-case>
 			<from-outcome>profile</from-outcome>
 			<to-view-id>/profile.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>

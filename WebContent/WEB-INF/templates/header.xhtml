@@ -11,7 +11,9 @@
 	<div class="row">
 		<div class="span12">
 			<div class="HC_headBanner">
-				<div class="HC_headBannerText">HSR Chat</div>
+				<div class="HC_headBannerText">
+					<h:outputLink value="welcome.jsf">HSR Chat</h:outputLink>
+				</div>
 				<div class="HC_headBannerLanguage">
 					<h:form>
 						<h:commandLink value="DE"
@@ -20,14 +22,8 @@
 						<h:commandLink value="EN"
 							actionListener="#{language.setLocaleCodeEn}"
 							class="#{language.localeCode eq 'en' ? 'HC_lang_active' : ''}" />
-						<h:panelGroup rendered="#{user.admin}">
-							<h:commandLink value="Admin" action="admin">
-							</h:commandLink>
-						</h:panelGroup>
-						<h:panelGroup rendered="#{user.loggedIn}">
-							<h:commandLink value="Profile" action="profile">
-							</h:commandLink>
-						</h:panelGroup>
+						<h:link outcome="admin" value="#{msg['head.admin']}" rendered="#{user.admin}"/>
+						<h:link outcome="profile" value="#{msg['head.profile']}" rendered="#{user.loggedIn}"/>
 						<h:commandLink value="Logoff" action="#{userManager.logOff}"
 							rendered="#{user.loggedIn}" immediate="true" />
 					</h:form>

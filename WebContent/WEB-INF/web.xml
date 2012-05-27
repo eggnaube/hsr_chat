@@ -20,6 +20,9 @@
 		<url-pattern>/welcome.xhtml</url-pattern>
 		<url-pattern>/chat.xhtml</url-pattern>
 		<url-pattern>/admin.xhtml</url-pattern>
+		<url-pattern>/admin.jsf</url-pattern>
+		<url-pattern>/profile.xhtml</url-pattern>
+		<url-pattern>/profile.jsf</url-pattern>
 	</filter-mapping>
 
 

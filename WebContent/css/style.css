@@ -28,6 +28,11 @@ body {
 	float: left;
 }
 
+.HC_headBannerText a, .HC_headBannerText a:HOVER, .HC_headBannerText a:VISITED {
+	color: white;
+	text-decoration: none;
+}
+
 .HC_content {
 	background-color: white;
 	border-top-left-radius: 8px;
@@ -57,11 +62,19 @@ body {
 }
 
 .HC_footer {
-	width: 100%;
 	height: 80px;
 	background-color: black;
-	bottom: 0px;
-	position: absolute;
+}
+
+.HC_footer div {
+	color: white;
+}
+
+.HC_footer img {
+	padding: 6px;
+	background-color: white;
+	float: right;
+	margin-top: -44px;
 }
 
 .HC_headBannerLanguage {
