@@ -37,7 +37,7 @@
 									<h:outputText value="#{message.chatterName}" />
 								</h:column>
 								<h:column>
-									<h:outputText value="#{message.message}" />
+									<h:outputText value="#{message.message}"/>
 								</h:column>
 							</h:dataTable>
 							<p:poll interval="3" update="messageTable" />
@@ -64,10 +64,10 @@
 							<div class="controls">
 								<div class="input-append">
 									<h:inputText value="#{message.message}"
-										styleClass="messageInput" style="width: 554px" />
+										styleClass="messageInput" style="width: 554px"/>
 									<h:commandButton value="Send!"
 										actionListener="#{chatRoom.addMessage}"
-										oncomplete="$('.messageInput').val('').focus()" type="submit"
+										oncomplete="$('#messageInput').val('').focus()" type="submit"
 										class="btn btn-primary" />
 								</div>
 							</div>

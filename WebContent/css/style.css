@@ -52,6 +52,19 @@ body {
 	overflow: auto;
 }
 
+.HC_chat table {
+	width: 100%;
+}
+
+.HC_chat td {
+	padding: 2px 8px 2px 2px;
+	border-bottom: 1px solid #D6D6D6;
+}
+
+.HC_chat td:FIRST-CHILD {
+	width: 120px;
+}
+
 .HC_user {
 	
 }

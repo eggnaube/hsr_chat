@@ -20,7 +20,7 @@
 				<h:messages class="alert alert-error"></h:messages>
 				<fieldset>
 					<div class="control-group">
-						<h:outputLabel value="Login" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['login.username']}" class="control-label"></h:outputLabel>
 						<div class="controls">
 							<h:inputText value="#{user.login}" label="Login">
 								<f:validateLength minimum="4" />
@@ -28,7 +28,7 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<h:outputLabel value="Name" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['login.name']}" class="control-label"></h:outputLabel>
 						<div class="controls">
 							<h:inputText value="#{user.name}" label="Username">
 								<f:validateRequired/>
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<h:outputLabel value="E-Mail" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['profile.email']}" class="control-label"></h:outputLabel>
 						<div class="controls">
 							<h:inputText value="#{user.mail}" label="Mail">
 								<f:validateRequired/>
@@ -45,7 +45,7 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<h:outputLabel value="Password" class="control-label"></h:outputLabel>
+						<h:outputLabel value="#{msg['login.password']}" class="control-label"></h:outputLabel>
 						<div class="controls">
 							<h:inputSecret value="#{user.password}" label="Password">
 								<f:validateRequired />
@@ -54,10 +54,10 @@
 					</div>
 				</fieldset>
 				<div class="form-actions">
-					<h:commandButton value="Register" action="#{userManager.register}"
+					<h:commandButton value="#{msg['login.register']}" action="#{userManager.register}"
 						class="btn btn-primary"></h:commandButton>
 						&nbsp;
-					<h:commandButton value="Cancel" action="cancel"
+					<h:commandButton value="#{msg['profile.cancel']}" action="cancel"
 						class="btn" immediate="true"></h:commandButton>
 				</div>
 			</h:form>

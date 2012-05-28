@@ -4,5 +4,6 @@ $('#hsr_chat_tab a').click(function(e) {
 });
 
 $(document).ready(function() {
-	$("#HC_chat_messages").prop({ scrollTop: $("#HC_chat_messages").prop('scrollHeight') });  
+	$(".HC_chat").prop({ scrollTop: $(".HC_chat").prop('scrollHeight') });
+	$('.messageInput').focus();
 });
